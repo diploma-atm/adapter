@@ -46,5 +46,6 @@ public class ClientEntity {
             this.lastName = clientDTO.lastName;
         }
         this.phoneNumber = clientDTO.phoneNumber;
+        this.isBlocked = false;
     }
 }

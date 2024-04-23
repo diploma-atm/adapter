@@ -2,12 +2,14 @@ package kz.diploma.adapter.model.entity.dto;
 
 import kz.diploma.adapter.model.entity.ClientEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class ClientDTO {
     public String surname;
     public String name;
@@ -17,7 +19,7 @@ public class ClientDTO {
     public ClientDTO(ClientEntity clientEntity){
         this.surname = clientEntity.surname;
         this.name = clientEntity.name;
-        if(!Objects.isNull(lastName)){
+        if(!Objects.isNull(clientEntity.lastName)){
             this.lastName = clientEntity.lastName;
         }
         this.phoneNumber = clientEntity.phoneNumber;
