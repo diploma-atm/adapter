@@ -51,6 +51,8 @@ public class ProductServiceImpl implements ProductService {
                 .clientEntity(clientEntity)
                 .build();
 
+        newProduct = productRepository.save(newProduct);
+
         newProduct.account = accountService.createAccount(newProduct);
 
         productRepository.save(newProduct);
