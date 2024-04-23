@@ -5,6 +5,8 @@ import kz.diploma.adapter.model.entity.dto.ClientDTO;
 import kz.diploma.adapter.model.entity.dto.ProductDTO;
 import kz.diploma.adapter.service.AdapterService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +50,8 @@ public class AdapterController {
 
     @GetMapping("/client/phone-number")
     public ResponseEntity<ClientDTO> getClientByPhoneNumber(String phoneNumber){
+        Logger log = LoggerFactory.getLogger(AdapterController.class);
+        log.info("Phone number: {}", phoneNumber);
         var entity = adapterService.getClientByPhoneNumber(phoneNumber);
         var clientDTO = new ClientDTO(entity);
 
@@ -75,28 +79,28 @@ public class AdapterController {
     public ResponseEntity<String> addProduct(@RequestParam(name = "clientId") Integer clientId){
         adapterService.addClientProduct(clientId);
 
-        return ResponseEntity.ok("Add product to black list was successfully");
+        return ResponseEntity.ok("Add product was successfully, default pin 0000");
     }
 
     @DeleteMapping("/product/delete")
     public ResponseEntity<String> deleteProduct(@RequestParam(name = "product_id") Integer productId){
         adapterService.deleteClientProduct(productId);
 
-        return ResponseEntity.ok("Delete client finished successfully");
+        return ResponseEntity.ok("Delete product finished successfully");
     }
 
     @PutMapping("/product/update")
     public ResponseEntity<String> updateProduct(@RequestBody ProductDTO productDTO, @RequestParam(name = "client_id") Integer productId){
         adapterService.updateClientProduct(productDTO, productId);
 
-        return ResponseEntity.ok("Update client finished successfully");
+        return ResponseEntity.ok("Update product finished successfully");
     }
 
     @GetMapping("/product/ban")
     public ResponseEntity<String> banProduct(@RequestParam(name = "productId") Integer productId){
         adapterService.blockProduct(productId);
 
-        return ResponseEntity.ok("Add client to black list was successfully");
+        return ResponseEntity.ok("Add product to black list was successfully");
     }
 
 
@@ -105,20 +109,20 @@ public class AdapterController {
     public ResponseEntity<String> saveClient(@RequestBody AdminDTO adminDTO){
         adapterService.addAdmin(adminDTO);
 
-        return ResponseEntity.ok("Save client finished successfully");
+        return ResponseEntity.ok("Save admin finished successfully");
     }
 
     @DeleteMapping("/admin/delete")
     public ResponseEntity<String> deleteAdmin(@RequestParam(name = "admin_id") Integer adminId){
         adapterService.deleteClient(adminId);
 
-        return ResponseEntity.ok("Delete client finished successfully");
+        return ResponseEntity.ok("Delete admin finished successfully");
     }
 
     @PutMapping("/admin/update")
     public ResponseEntity<String> updateClient(@RequestBody AdminDTO adminDTO, @RequestParam(name = "admin_id") Integer adminId){
         adapterService.updateAdmin(adminDTO, adminId);
 
-        return ResponseEntity.ok("Update client finished successfully");
+        return ResponseEntity.ok("Update admin finished successfully");
     }
 }
