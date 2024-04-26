@@ -46,7 +46,7 @@ public abstract class BaseAdapterClientRepository {
         return dsl
                 .select(ACCOUNT.ID)
                 .select(ACCOUNT.ACCOUNT_NUMBER)
-                .select(ACCOUNT.AMOUNT)
+                .select(ACCOUNT.CASH)
                 .from(ACCOUNT.as("account"))
                 .where(ACCOUNT.PRODUCT_ID.eq(productId))
                 .fetchOneInto(AccountResponse.class);

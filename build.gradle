@@ -31,19 +31,42 @@ dependencyManagement {
 }
 
 dependencies {
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//CLOUD
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	//liquibase
+	implementation 'org.liquibase:liquibase-core'
+
+	//LIBS
 	implementation 'kz.diploma.shared.library:model'
 	implementation 'kz.diploma.shared.library:access'
 	implementation 'kz.diploma.shared.library:jooq'
+
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+bootBuildImage {
+	if (!project.hasProperty("dockerImageTag")) {
+		ext.dockerImageTag = "test"
+	}
+
+	builder = "paketobuildpacks/builder-jammy-tiny"
+	createdDate = "now"
+	imageName = "ghcr.io/diploma-atm/adapter:${dockerImageTag}"
+	environment = ["BP_NATIVE_IMAGE"             : "false",
+				   "BP_JVM_VERSION"              : "17"]
 }
