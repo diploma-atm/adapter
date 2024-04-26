@@ -40,6 +40,8 @@ dependencies {
 	//liquibase
 	implementation 'org.liquibase:liquibase-core'
 
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
 	//LIBS
 	implementation 'kz.diploma.shared.library:model'
 	implementation 'kz.diploma.shared.library:access'

@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8088
+  description: Generated server url
+paths:
+  /adapter/client/{id}:
+    get:
+      tags:
+      - adapter-controller
+      operationId: getClient
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+  /adapter/client/phone-number:
+    get:
+      tags:
+      - adapter-controller
+      operationId: getClientByPhoneNumber
+      parameters:
+      - name: phoneNumber
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+  /adapter/client/pan:
+    get:
+      tags:
+      - adapter-controller
+      operationId: getClient_1
+      parameters:
+      - name: pan
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+  /adapter/client/fio:
+    get:
+      tags:
+      - adapter-controller
+      operationId: getClientByFio
+      parameters:
+      - name: surname
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lastname
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientResponse'
+components:
+  schemas:
+    AccountResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        accountNumber:
+          type: string
+        amount:
+          type: integer
+          format: int32
+    ClientResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        surname:
+          type: string
+        name:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        isBlocked:
+          type: boolean
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+    ProductResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        pan:
+          type: string
+        pin:
+          type: string
+        cvv:
+          type: string
+        rbs:
+          type: string
+        active:
+          type: boolean
+        inAccess:
+          type: boolean
+        outAccess:
+          type: boolean
+        isBlocked:
+          type: boolean
+        accountResponse:
+          $ref: '#/components/schemas/AccountResponse'
