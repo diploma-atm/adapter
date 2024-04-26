@@ -1,10 +1,10 @@
-package kz.diploma.adapter.service;
+package kz.diploma.adapter.repository;
 
 import kz.diploma.adapter.model.entity.response.ClientResponse;
 
 import java.util.List;
 
-public interface AdapterService {
+public interface AdapterRepository {
     ClientResponse getClientByPan(String pan);
 
     List<ClientResponse> getClientByFio(String surname, String name, String lastname);
