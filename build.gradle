@@ -12,7 +12,6 @@ configurations {
 }
 
 repositories {
-	mavenLocal()
 	maven {
 		url = uri("https://maven.pkg.github.com/diploma-atm/library")
 		credentials {
@@ -44,7 +43,6 @@ dependencies {
 
 	//LIBS
 	implementation 'kz.diploma.shared.library:model'
-	implementation 'kz.diploma.shared.library:access'
 	implementation 'kz.diploma.shared.library:jooq'
 
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
