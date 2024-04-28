@@ -9,6 +9,6 @@ public class AccountResponse {
 
     public String accountNumber;
 
-    public Integer amount;
+    public Integer cash;
 
 }
