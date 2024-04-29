@@ -22,7 +22,7 @@ public class AdapterRepositoryImpl implements AdapterRepository {
 
     @Override
     public ClientClientResponse getClientByPan(String pan) {
-        return adapterByPanRepository.findByPan(pan);
+        return adapterByPanRepository.getClientByPan(pan);
     }
 
     @Override
@@ -43,5 +43,10 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     @Override
     public ProductProductResponse getProductById(Integer id) {
         return adapterByIdRepository.getProductById(id);
+    }
+
+    @Override
+    public ProductProductResponse getProductByPan(String pan) {
+        return adapterByPanRepository.getProductByPan(pan);
     }
 }

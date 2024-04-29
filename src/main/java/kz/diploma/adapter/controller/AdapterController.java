@@ -52,4 +52,10 @@ public class AdapterController {
         return ResponseEntity.ok(productResponse);
     }
 
+    @GetMapping("/product/{pan}")
+    public ResponseEntity<ProductProductResponse> getProductByPan(@PathVariable(name = "pan") String pan){
+        var productResponse = adapterService.getProductByPan(pan);
+
+        return ResponseEntity.ok(productResponse);
+    }
 }

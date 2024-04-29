@@ -15,4 +15,6 @@ public interface AdapterRepository {
     ClientClientResponse getClientById(Integer id);
 
     ProductProductResponse getProductById(Integer id);
+
+    ProductProductResponse getProductByPan(String pan);
 }

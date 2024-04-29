@@ -38,4 +38,9 @@ public class AdapterServiceImpl implements AdapterService {
     public ProductProductResponse getProductById(Integer productId) {
         return repository.getProductById(productId);
     }
+
+    @Override
+    public ProductProductResponse getProductByPan(String pan) {
+        return repository.getProductByPan(pan);
+    }
 }

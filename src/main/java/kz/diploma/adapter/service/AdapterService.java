@@ -15,4 +15,6 @@ public interface AdapterService {
     ClientClientResponse getClientById(Integer id);
 
     ProductProductResponse getProductById(Integer productId);
+
+    ProductProductResponse getProductByPan(String pan);
 }
