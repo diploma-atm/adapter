@@ -3,8 +3,10 @@ package kz.diploma.adapter.repository.impl.subrepository;
 import kz.diploma.adapter.model.entity.pojo.ClientPojo;
 import kz.diploma.adapter.model.entity.pojo.ProductPojo;
 import kz.diploma.adapter.model.entity.response.AccountResponse;
-import kz.diploma.adapter.model.entity.response.ClientResponse;
-import kz.diploma.adapter.model.entity.response.ProductResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientProductResponse;
+import kz.diploma.adapter.model.entity.response.product.ProductClientResponse;
+import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -58,18 +60,38 @@ public abstract class BaseAdapterClientRepository {
                 .fetchOneInto(ClientPojo.class);
     }
 
-    protected ClientResponse getClientResponse(ClientPojo clientPojo){
-        var clientResponse = new ClientResponse(clientPojo);
+    protected ClientClientResponse getClientResponse(ClientPojo clientPojo){
+        var clientResponse = new ClientClientResponse(clientPojo);
 
         var productsPojoList = selectProducts().where(PRODUCT.CLIENT_ID.eq(clientPojo.id)).fetchInto(ProductPojo.class);
 
         clientResponse.products = productsPojoList.stream().map(item1 -> {
-            var product = new ProductResponse(item1);
+            var product = new ClientProductResponse(item1);
             product.accountResponse = selectAccountByProductId(product.id);
 
             return product;
         }).toList();
 
         return clientResponse;
+    }
+
+    protected ProductProductResponse getProductResponse(ProductPojo productPojo){
+        var productResponse = new ProductProductResponse(productPojo);
+        var clientId = findClientIdByPan(productPojo.pan);
+
+        productResponse.clientResponse = selectClient().where(CLIENT.ID.eq(clientId)).fetchOneInto(ProductClientResponse.class);
+        productResponse.accountResponse = selectAccountByProductId(productPojo.id);
+
+
+        return productResponse;
+    }
+
+
+    protected Integer findClientIdByPan(String pan){
+        return this.dsl
+                .select(PRODUCT.CLIENT_ID)
+                .from(PRODUCT)
+                .where(PRODUCT.PAN.eq(pan))
+                .fetchOneInto(Integer.class);
     }
 }

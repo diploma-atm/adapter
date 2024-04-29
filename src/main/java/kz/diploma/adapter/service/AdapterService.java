@@ -1,15 +1,18 @@
 package kz.diploma.adapter.service;
 
-import kz.diploma.adapter.model.entity.response.ClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 
 import java.util.List;
 
 public interface AdapterService {
-    ClientResponse getClientByPan(String pan);
+    ClientClientResponse getClientByPan(String pan);
 
-    List<ClientResponse> getClientByFio(String surname, String name, String lastname);
+    List<ClientClientResponse> getClientByFio(String surname, String name, String lastname);
 
-    ClientResponse getClientByPhoneNumber(String phoneNumber);
+    ClientClientResponse getClientByPhoneNumber(String phoneNumber);
 
-    ClientResponse getClientById(Integer id);
+    ClientClientResponse getClientById(Integer id);
+
+    ProductProductResponse getProductById(Integer productId);
 }

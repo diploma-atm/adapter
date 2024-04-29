@@ -1,6 +1,7 @@
 package kz.diploma.adapter.repository.impl;
 
-import kz.diploma.adapter.model.entity.response.ClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByFioRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByIdRepository;
@@ -20,22 +21,27 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     private final AdapterByIdRepository adapterByIdRepository;
 
     @Override
-    public ClientResponse getClientByPan(String pan) {
+    public ClientClientResponse getClientByPan(String pan) {
         return adapterByPanRepository.findByPan(pan);
     }
 
     @Override
-    public List<ClientResponse> getClientByFio(String surname, String name, String lastname) {
+    public List<ClientClientResponse> getClientByFio(String surname, String name, String lastname) {
         return adapterByFioRepository.getClientByFio(surname, name, lastname);
     }
 
     @Override
-    public ClientResponse getClientByPhoneNumber(String phoneNumber) {
+    public ClientClientResponse getClientByPhoneNumber(String phoneNumber) {
         return adapterByPhoneNumberRepository.findByPhoneNumber(phoneNumber);
     }
 
     @Override
-    public ClientResponse getClientById(Integer id) {
+    public ClientClientResponse getClientById(Integer id) {
         return adapterByIdRepository.getClientById(id);
+    }
+
+    @Override
+    public ProductProductResponse getProductById(Integer id) {
+        return adapterByIdRepository.getProductById(id);
     }
 }

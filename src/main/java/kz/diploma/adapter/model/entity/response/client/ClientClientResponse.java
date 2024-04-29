@@ -1,4 +1,4 @@
-package kz.diploma.adapter.model.entity.response;
+package kz.diploma.adapter.model.entity.response.client;
 
 import kz.diploma.adapter.model.entity.pojo.ClientPojo;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class ClientResponse {
+public class ClientClientResponse {
     public Integer id;
 
     public String surname;
@@ -21,9 +21,9 @@ public class ClientResponse {
 
     public Boolean isBlocked;
 
-    public List<ProductResponse> products;
+    public List<ClientProductResponse> products;
 
-    public ClientResponse(ClientPojo clientPojo) {
+    public ClientClientResponse(ClientPojo clientPojo) {
         this.id = clientPojo.getId();
         this.surname = clientPojo.getSurname();
         this.name = clientPojo.getName();

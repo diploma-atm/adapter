@@ -1,6 +1,7 @@
 package kz.diploma.adapter.controller;
 
-import kz.diploma.adapter.model.entity.response.ClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.service.AdapterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,31 +17,39 @@ public class AdapterController {
 
     //CLIENT
     @GetMapping("/client/pan")
-    public ResponseEntity<ClientResponse> getClient(String pan){
+    public ResponseEntity<ClientClientResponse> getClient(String pan){
         var clientResponse = adapterService.getClientByPan(pan);
 
         return ResponseEntity.ok(clientResponse);
     }
 
     @GetMapping("/client/{id}")
-    public ResponseEntity<ClientResponse> getClient(@PathVariable(name = "id") Integer id){
+    public ResponseEntity<ClientClientResponse> getClient(@PathVariable(name = "id") Integer id){
         var clientResponse = adapterService.getClientById(id);
 
         return ResponseEntity.ok(clientResponse);
     }
 
     @GetMapping("/client/phone-number")
-    public ResponseEntity<ClientResponse> getClientByPhoneNumber(String phoneNumber){
+    public ResponseEntity<ClientClientResponse> getClientByPhoneNumber(String phoneNumber){
         var clientResponse = adapterService.getClientByPhoneNumber(phoneNumber);
 
         return ResponseEntity.ok(clientResponse);
     }
 
     @GetMapping("/client/fio")
-    public ResponseEntity<List<ClientResponse>> getClientByFio(String surname, String name, String lastname){
+    public ResponseEntity<List<ClientClientResponse>> getClientByFio(String surname, String name, String lastname){
         var clientResponse = adapterService.getClientByFio(surname, name, lastname);
 
         return ResponseEntity.ok(clientResponse);
+    }
+
+    //PRODUCT
+    @GetMapping("/product/{id}")
+    public ResponseEntity<ProductProductResponse> getProductById(@PathVariable(name = "id") Integer id){
+        var productResponse = adapterService.getProductById(id);
+
+        return ResponseEntity.ok(productResponse);
     }
 
 }

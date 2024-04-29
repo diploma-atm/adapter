@@ -1,6 +1,7 @@
-package kz.diploma.adapter.model.entity.response;
+package kz.diploma.adapter.model.entity.response.client;
 
 import kz.diploma.adapter.model.entity.pojo.ProductPojo;
+import kz.diploma.adapter.model.entity.response.AccountResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class ProductResponse {
+public class ClientProductResponse {
     public Integer id;
 
     public LocalDateTime createdAt;
@@ -31,7 +32,7 @@ public class ProductResponse {
 
     public AccountResponse accountResponse;
 
-    public ProductResponse(ProductPojo productPojo) {
+    public ClientProductResponse(ProductPojo productPojo) {
         this.id = productPojo.getId();
         this.createdAt = productPojo.getCreatedAt();
         this.pan = productPojo.getPan();
