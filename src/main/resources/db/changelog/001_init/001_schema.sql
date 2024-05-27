@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS product (
     cvv VARCHAR(255),
     rbs VARCHAR(255),
     active BOOLEAN,
+    expired_date timestamp,
     in_access BOOLEAN,
     out_access BOOLEAN,
     is_blocked BOOLEAN,
