@@ -41,6 +41,7 @@ public abstract class BaseAdapterClientRepository {
                 .select(PRODUCT.IN_ACCESS)
                 .select(PRODUCT.OUT_ACCESS)
                 .select(PRODUCT.IS_BLOCKED)
+                .select(PRODUCT.EXPIRED_DATE)
                 .from(PRODUCT);
     }
 

@@ -2,6 +2,7 @@ package kz.diploma.adapter.model.entity.pojo;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,4 +26,6 @@ public class ProductPojo {
     public Boolean outAccess;
 
     public Boolean isBlocked;
+
+    public LocalDate expiredDate;
 }

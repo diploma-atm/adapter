@@ -1,5 +1,6 @@
 package kz.diploma.adapter.controller;
 
+import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.service.AdapterService;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/adapter")
 @RequiredArgsConstructor
+@RequestMapping("/adapter")
 public class AdapterController {
     private final AdapterService adapterService;
 
@@ -52,10 +53,25 @@ public class AdapterController {
         return ResponseEntity.ok(productResponse);
     }
 
-    @GetMapping("/product/{pan}")
+    @GetMapping("/product/pan/{pan}")
     public ResponseEntity<ProductProductResponse> getProductByPan(@PathVariable(name = "pan") String pan){
         var productResponse = adapterService.getProductByPan(pan);
 
         return ResponseEntity.ok(productResponse);
+    }
+
+
+    @GetMapping("/admin")
+    public ResponseEntity<List<AdminResponse>> getAllAdmins(){
+        var adminResponse = adapterService.getAllAdmins();
+
+        return ResponseEntity.ok(adminResponse);
+    }
+
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<AdminResponse> getAdminById(@PathVariable(name = "id") Integer id){
+        var adminResponse = adapterService.getAdminById(id);
+
+        return ResponseEntity.ok(adminResponse);
     }
 }

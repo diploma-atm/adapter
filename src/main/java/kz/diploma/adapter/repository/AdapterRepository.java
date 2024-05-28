@@ -1,5 +1,6 @@
 package kz.diploma.adapter.repository;
 
+import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 
@@ -17,4 +18,8 @@ public interface AdapterRepository {
     ProductProductResponse getProductById(Integer id);
 
     ProductProductResponse getProductByPan(String pan);
+
+    List<AdminResponse> getAllAdmins();
+
+    AdminResponse getAdminById(Integer id);
 }

@@ -1,8 +1,10 @@
 package kz.diploma.adapter.repository.impl;
 
+import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
+import kz.diploma.adapter.repository.impl.admin.AdminJooqRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByFioRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByIdRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByPanRepository;
@@ -19,6 +21,7 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     private final AdapterByPhoneNumberRepository adapterByPhoneNumberRepository;
     private final AdapterByFioRepository adapterByFioRepository;
     private final AdapterByIdRepository adapterByIdRepository;
+    private final AdminJooqRepository adminJooqRepository;
 
     @Override
     public ClientClientResponse getClientByPan(String pan) {
@@ -48,5 +51,15 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     @Override
     public ProductProductResponse getProductByPan(String pan) {
         return adapterByPanRepository.getProductByPan(pan);
+    }
+
+    @Override
+    public List<AdminResponse> getAllAdmins() {
+        return adminJooqRepository.getAll();
+    }
+
+    @Override
+    public AdminResponse getAdminById(Integer id) {
+        return adminJooqRepository.getById(id);
     }
 }

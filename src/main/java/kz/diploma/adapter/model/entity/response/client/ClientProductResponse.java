@@ -5,6 +5,7 @@ import kz.diploma.adapter.model.entity.response.AccountResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -30,6 +31,8 @@ public class ClientProductResponse {
 
     public Boolean isBlocked;
 
+    public LocalDate expiredDate;
+
     public AccountResponse accountResponse;
 
     public ClientProductResponse(ProductPojo productPojo) {
@@ -43,5 +46,6 @@ public class ClientProductResponse {
         this.inAccess = productPojo.getInAccess();
         this.outAccess = productPojo.getOutAccess();
         this.isBlocked = productPojo.getIsBlocked();
+        this.expiredDate = productPojo.getExpiredDate();
     }
 }

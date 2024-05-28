@@ -1,5 +1,6 @@
 package kz.diploma.adapter.service.impl;
 
+import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
@@ -42,5 +43,15 @@ public class AdapterServiceImpl implements AdapterService {
     @Override
     public ProductProductResponse getProductByPan(String pan) {
         return repository.getProductByPan(pan);
+    }
+
+    @Override
+    public List<AdminResponse> getAllAdmins() {
+        return repository.getAllAdmins();
+    }
+
+    @Override
+    public AdminResponse getAdminById(Integer id) {
+        return repository.getAdminById(id);
     }
 }
