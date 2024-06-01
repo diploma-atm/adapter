@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS auth_keys (
                                      expiry_date TIMESTAMP,
                                      terminated_date TIMESTAMP,
                                      phone_number VARCHAR(255) UNIQUE,
-                                     apiKey VARCHAR(255)
+                                     api_key VARCHAR(255)
     );
 
 CREATE TABLE IF NOT EXISTS admin (
