@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS auth_keys (
                                      expiry_date TIMESTAMP,
                                      terminated_date TIMESTAMP,
                                      phone_number VARCHAR(255) UNIQUE,
-                                     apiKey VARCHAR(255),
+                                     apiKey VARCHAR(255)
     );
 
 CREATE TABLE IF NOT EXISTS admin (
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS admin (
     last_name VARCHAR(255),
     phone_number VARCHAR(255) UNIQUE,
     post VARCHAR(255),
-    password VARCHAR(255)
+    password VARCHAR(255),
     registration VARCHAR(255)
     );
 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS client (
     name VARCHAR(255),
     last_name VARCHAR(255),
     phone_number VARCHAR(255) UNIQUE,
-    password VARCHAR(255)
+    password VARCHAR(255),
     is_blocked BOOLEAN
     );
 
