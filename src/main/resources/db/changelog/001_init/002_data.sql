@@ -1,12 +1,12 @@
 -- Примеры данных для таблицы client
-INSERT INTO client (sur_name, name, last_name, phone_number, is_blocked)
-VALUES ('Сидоров', 'Сидор', 'Сидорович', '83456789012', false),
-       ('Петров', 'Петр', 'Петрович', '84567890123', true);
+INSERT INTO client (sur_name, name, last_name, phone_number, password, is_blocked)
+VALUES ('Сидоров', 'Сидор', 'Сидорович', '83456789012', '123123', false),
+       ('Петров', 'Петр', 'Петрович', '84567890123', '123123', true);
 
 -- Примеры данных для таблицы admin
-INSERT INTO admin (sur_name, name, last_name, phone_number, post, registration)
-VALUES ('Иванов', 'Иван', 'Иванович', '81234567890', 'Администратор', '2022-04-27'),
-       ('Петров', 'Петр', 'Петрович', '82345678901', 'Менеджер', '2022-04-27');
+INSERT INTO admin (sur_name, name, last_name, phone_number, post, password, registration)
+VALUES ('Иванов', 'Иван', 'Иванович', '81234567890', 'Администр атор', '123123', '2022-04-27'),
+       ('Петров', 'Петр', 'Петрович', '82345678901', 'Менеджер', '123123', '2022-04-27');
 
 -- Примеры данных для таблицы product
 INSERT INTO product (created_at, pan, pin, cvv, rbs, active, in_access, out_access, is_blocked, client_id)
