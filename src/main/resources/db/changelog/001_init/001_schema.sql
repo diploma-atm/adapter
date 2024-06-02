@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS auth_keys (
                                      start_date TIMESTAMP,
                                      expiry_date TIMESTAMP,
                                      terminated_date TIMESTAMP,
-                                     phone_number VARCHAR(255) UNIQUE,
+                                     phone_number VARCHAR(255),
                                      api_key VARCHAR(255)
     );
 
