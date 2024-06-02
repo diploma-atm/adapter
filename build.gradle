@@ -12,6 +12,7 @@ configurations {
 }
 
 repositories {
+	mavenLocal()
 	maven {
 		url = uri("https://maven.pkg.github.com/diploma-atm/library")
 		credentials {
@@ -25,7 +26,7 @@ repositories {
 
 dependencyManagement {
 	imports {
-		mavenBom "kz.diploma.shared.library:bom:1.0.3"
+		mavenBom "kz.diploma.shared.library:bom:2.0.0"
 	}
 }
 
