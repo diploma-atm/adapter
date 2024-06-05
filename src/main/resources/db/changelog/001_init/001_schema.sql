@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS auth_keys (
                                      start_date TIMESTAMP,
                                      expiry_date TIMESTAMP,
                                      terminated_date TIMESTAMP,
-                                     phone_number VARCHAR(255),
+                                     login VARCHAR(255),
                                      api_key VARCHAR(255)
     );
 
@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS client (
     name VARCHAR(255),
     last_name VARCHAR(255),
     phone_number VARCHAR(255) UNIQUE,
-    password VARCHAR(255),
     is_blocked BOOLEAN
     );
 

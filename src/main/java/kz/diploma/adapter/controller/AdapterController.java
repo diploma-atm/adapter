@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/adapter")
+@CrossOrigin
 public class AdapterController {
     private final AdapterService adapterService;
 

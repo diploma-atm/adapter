@@ -1,7 +1,7 @@
 -- Примеры данных для таблицы client
-INSERT INTO client (sur_name, name, last_name, phone_number, password, is_blocked)
-VALUES ('Сидоров', 'Сидор', 'Сидорович', '83456789012', '123123', false),
-       ('Петров', 'Петр', 'Петрович', '84567890123', '123123', true);
+INSERT INTO client (sur_name, name, last_name, phone_number, is_blocked)
+VALUES ('Сидоров', 'Сидор', 'Сидорович', '83456789012', false),
+       ('Петров', 'Петр', 'Петрович', '84567890123', true);
 
 -- Примеры данных для таблицы admin
 INSERT INTO admin (sur_name, name, last_name, phone_number, post, password, registration)
