@@ -2,9 +2,9 @@ package kz.diploma.adapter.controller;
 
 import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.service.AdapterService;
-import kz.diploma.library.shared.model.entity.ClientEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -77,10 +77,17 @@ public class AdapterController {
         return ResponseEntity.ok(adminResponse);
     }
 
-    @GetMapping("/admin")
-    public ResponseEntity<List<ClientEntity>> getAllClients(){
+    @GetMapping("/clients")
+    public ResponseEntity<List<ClientResponse>> getAllClients(){
         var clientResponse = adapterService.getAllClients();
 
         return ResponseEntity.ok(clientResponse);
+    }
+
+    @GetMapping("/admin/phone-number")
+    public ResponseEntity<AdminResponse> getAdminByPhoneNumber(String phoneNumber){
+        var admin = adapterService.getAdminByPhoneNumber(phoneNumber);
+
+        return ResponseEntity.ok(admin);
     }
 }

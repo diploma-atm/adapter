@@ -26,6 +26,11 @@ public class AdminJooqRepository {
                 .fetchOneInto(AdminResponse.class);
     }
 
+    public AdminResponse getByPhoneNumber(String phoneNumber){
+        return getSql()
+                .where(ADMIN.PHONE_NUMBER.eq(phoneNumber))
+                .fetchOneInto(AdminResponse.class);
+    }
     private SelectJoinStep<Record> getSql(){
         return dsl
                 .select(ADMIN.ID.as("id"))
@@ -35,6 +40,7 @@ public class AdminJooqRepository {
                 .select(ADMIN.PHONE_NUMBER.as("phoneNumber"))
                 .select(ADMIN.POST.as("post"))
                 .select(ADMIN.REGISTRATION.as("registration"))
+                .select(ADMIN.PASSWORD.as("password"))
                 .from(ADMIN);
     }
 }

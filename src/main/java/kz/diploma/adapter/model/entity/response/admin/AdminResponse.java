@@ -7,6 +7,7 @@ public record AdminResponse(
         String lastname,
         String phoneNumber,
         String post,
-        String registration
+        String registration,
+        String password
 ) {
 }

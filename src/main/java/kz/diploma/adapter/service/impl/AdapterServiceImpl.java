@@ -2,22 +2,19 @@ package kz.diploma.adapter.service.impl;
 
 import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
 import kz.diploma.adapter.service.AdapterService;
-import kz.diploma.library.shared.model.entity.ClientEntity;
-import kz.diploma.library.shared.model.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AdapterServiceImpl implements AdapterService {
     private final AdapterRepository repository;
-    private final ClientRepository clientRepository;
 
     @Override
     public ClientClientResponse getClientByPan(String pan) {
@@ -60,10 +57,12 @@ public class AdapterServiceImpl implements AdapterService {
     }
 
     @Override
-    public List<ClientEntity> getAllClients() {
-        var list = new ArrayList<ClientEntity>();
-        clientRepository.findAll().forEach(list::add);
+    public List<ClientResponse> getAllClients() {
+        return repository.getAllClients();
+    }
 
-        return list;
+    @Override
+    public AdminResponse getAdminByPhoneNumber(String phoneNumber) {
+        return repository.getAdminByPhoneNumber(phoneNumber);
     }
 }

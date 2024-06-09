@@ -2,9 +2,11 @@ package kz.diploma.adapter.repository.impl;
 
 import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
 import kz.diploma.adapter.repository.impl.admin.AdminJooqRepository;
+import kz.diploma.adapter.repository.impl.client.ClientJooqRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByFioRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByIdRepository;
 import kz.diploma.adapter.repository.impl.subrepository.AdapterByPanRepository;
@@ -22,6 +24,7 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     private final AdapterByFioRepository adapterByFioRepository;
     private final AdapterByIdRepository adapterByIdRepository;
     private final AdminJooqRepository adminJooqRepository;
+    private final ClientJooqRepository clientJooqRepository;
 
     @Override
     public ClientClientResponse getClientByPan(String pan) {
@@ -61,5 +64,15 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     @Override
     public AdminResponse getAdminById(Integer id) {
         return adminJooqRepository.getById(id);
+    }
+
+    @Override
+    public List<ClientResponse> getAllClients() {
+        return clientJooqRepository.getAllClients();
+    }
+
+    @Override
+    public AdminResponse getAdminByPhoneNumber(String phoneNumber) {
+        return adminJooqRepository.getByPhoneNumber(phoneNumber);
     }
 }

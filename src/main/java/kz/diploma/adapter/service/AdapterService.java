@@ -2,6 +2,7 @@ package kz.diploma.adapter.service;
 
 import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
+import kz.diploma.adapter.model.entity.response.client.ClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.library.shared.model.entity.ClientEntity;
 
@@ -24,5 +25,7 @@ public interface AdapterService {
 
     AdminResponse getAdminById(Integer id);
 
-    List<ClientEntity> getAllClients();
+    List<ClientResponse> getAllClients();
+
+    AdminResponse getAdminByPhoneNumber(String phoneNumber);
 }
