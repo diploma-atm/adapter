@@ -3,6 +3,7 @@ package kz.diploma.adapter.service;
 import kz.diploma.adapter.model.entity.response.admin.AdminResponse;
 import kz.diploma.adapter.model.entity.response.client.ClientClientResponse;
 import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
+import kz.diploma.library.shared.model.entity.ClientEntity;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface AdapterService {
     List<AdminResponse> getAllAdmins();
 
     AdminResponse getAdminById(Integer id);
+
+    List<ClientEntity> getAllClients();
 }
