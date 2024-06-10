@@ -65,4 +65,9 @@ public class AdapterServiceImpl implements AdapterService {
     public AdminResponse getAdminByPhoneNumber(String phoneNumber) {
         return repository.getAdminByPhoneNumber(phoneNumber);
     }
+
+    @Override
+    public List<ClientClientResponse> getAllClientsResponse() {
+        return repository.getClientsResponse();
+    }
 }

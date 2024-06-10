@@ -27,4 +27,6 @@ public interface AdapterRepository {
     List<ClientResponse> getAllClients();
 
     AdminResponse getAdminByPhoneNumber(String phoneNumber);
+
+    List<ClientClientResponse> getClientsResponse();
 }

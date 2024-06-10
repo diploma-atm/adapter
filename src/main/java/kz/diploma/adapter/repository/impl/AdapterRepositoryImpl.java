@@ -7,10 +7,7 @@ import kz.diploma.adapter.model.entity.response.product.ProductProductResponse;
 import kz.diploma.adapter.repository.AdapterRepository;
 import kz.diploma.adapter.repository.impl.admin.AdminJooqRepository;
 import kz.diploma.adapter.repository.impl.client.ClientJooqRepository;
-import kz.diploma.adapter.repository.impl.subrepository.AdapterByFioRepository;
-import kz.diploma.adapter.repository.impl.subrepository.AdapterByIdRepository;
-import kz.diploma.adapter.repository.impl.subrepository.AdapterByPanRepository;
-import kz.diploma.adapter.repository.impl.subrepository.AdapterByPhoneNumberRepository;
+import kz.diploma.adapter.repository.impl.subrepository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +22,7 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     private final AdapterByIdRepository adapterByIdRepository;
     private final AdminJooqRepository adminJooqRepository;
     private final ClientJooqRepository clientJooqRepository;
-
+    private final GetAllClientsRepository getAllClientsRepository;
     @Override
     public ClientClientResponse getClientByPan(String pan) {
         return adapterByPanRepository.getClientByPan(pan);
@@ -74,5 +71,10 @@ public class AdapterRepositoryImpl implements AdapterRepository {
     @Override
     public AdminResponse getAdminByPhoneNumber(String phoneNumber) {
         return adminJooqRepository.getByPhoneNumber(phoneNumber);
+    }
+
+    @Override
+    public List<ClientClientResponse> getClientsResponse() {
+        return getAllClientsRepository.getAllClientsResponse();
     }
 }

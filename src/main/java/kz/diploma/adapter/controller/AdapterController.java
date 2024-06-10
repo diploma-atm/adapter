@@ -77,6 +77,13 @@ public class AdapterController {
         return ResponseEntity.ok(adminResponse);
     }
 
+    @GetMapping("/all/clients")
+    public ResponseEntity<List<ClientClientResponse>> getAllClientsResponse(){
+        var clientResponse = adapterService.getAllClientsResponse();
+
+        return ResponseEntity.ok(clientResponse);
+    }
+
     @GetMapping("/clients")
     public ResponseEntity<List<ClientResponse>> getAllClients(){
         var clientResponse = adapterService.getAllClients();

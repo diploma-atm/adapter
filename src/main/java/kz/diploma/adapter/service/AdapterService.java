@@ -28,4 +28,6 @@ public interface AdapterService {
     List<ClientResponse> getAllClients();
 
     AdminResponse getAdminByPhoneNumber(String phoneNumber);
+
+    List<ClientClientResponse> getAllClientsResponse();
 }
